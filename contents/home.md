@@ -9,7 +9,7 @@ He is currently a Master's candidate in the School of Ocean & Civil Engineering 
 Email: 2020lmy@sjtu.edu.cn
 
 #### Education
-M.E., Computer Science and Technology, China University of Mining and Technology, 2024—now.\
+M.E., Naval Architecture and Ocean Engineering, Shanghai Jiao Tong University, 2024—now.\
 B.E., Naval Architecture and Ocean Engineering, Shanghai Jiao Tong University, 2020—2024.
 
 #### Research Interests
