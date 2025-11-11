@@ -2,16 +2,16 @@
 
 [![lmyhappy66](https://img.shields.io/badge/lmyhappy66-github-blue?logo=github)](https://github.com/lmyhappy66)
 
-He is currently a Fellow in the Department of Earth and Planetary Sciences (EPS) at Harvard University.
+He is currently a Master's candidate in the School of Ocean & Civil Engineering at Shanghai Jiao Tong University.
 
 #### Contact
 
 Email: 2020lmy@sjtu.edu.cn
 
 #### Education
-M.E., Computer Science and Technology, China University of Mining and Technology, 2022—2025.\
-B.E., Data Science and Big Data Technology, China University of Mining and Technology, 2018—2022.
+M.E., Computer Science and Technology, China University of Mining and Technology, 2024—now.\
+B.E., Naval Architecture and Ocean Engineering, Shanghai Jiao Tong University, 2020—2024.
 
 #### Research Interests
-Deep Learning, Artificial Intelligence Seismology, Mine Microseismic.
+Unmanned Surface Vehicles, Marine Robotics, Motion Control, System Modeling, MPC & RL.
 
