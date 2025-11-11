@@ -2,6 +2,7 @@
 
 const content_dir = 'contents/'
 const config_file = 'config.yml'
+const research_cards_file = 'research_cards.yml'
 const section_names = ['home', 'research', 'publications', 'awards']
 
 
@@ -61,5 +62,41 @@ window.addEventListener('DOMContentLoaded', event => {
             })
             .catch(error => console.log(error));
     })
+
+    // Research Cards (optional, dynamic from YAML)
+    const cardsContainer = document.getElementById('research-cards');
+    if (cardsContainer) {
+        fetch(content_dir + research_cards_file)
+            .then(r => r.text())
+            .then(text => {
+                let cfg;
+                try { cfg = jsyaml.load(text); } catch (e) { console.error('YAML error', e); return; }
+                const cards = (cfg && cfg.cards) ? cfg.cards : [];
+                if (!Array.isArray(cards) || cards.length === 0) return;
+
+                const row = document.createElement('div');
+                row.className = 'row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4';
+                cards.forEach(card => {
+                    const col = document.createElement('div');
+                    col.className = 'col';
+                    const link = card.slug ? `research.html?topic=${encodeURIComponent(card.slug)}` : 'research.html';
+                    const img = card.image || 'static/assets/img/background.jpeg';
+                    const title = card.title || 'Research';
+                    const excerpt = card.excerpt || '';
+                    col.innerHTML = `
+                        <div class="card h-100 shadow-sm">
+                            <img src="${img}" class="card-img-top" alt="${title}">
+                            <div class="card-body">
+                                <h5 class="card-title">${title}</h5>
+                                <p class="card-text">${excerpt}</p>
+                                <a href="${link}" class="stretched-link text-primary">Read More &gt;&gt;</a>
+                            </div>
+                        </div>`;
+                    row.appendChild(col);
+                });
+                cardsContainer.replaceChildren(row);
+            })
+            .catch(err => console.log('research_cards.yml not found or failed to load', err));
+    }
 
 }); 
