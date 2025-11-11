@@ -1,6 +1,6 @@
 
 
-[![senli1073](https://img.shields.io/badge/senli1073-github-blue?logo=github)](https://github.com/senli1073)
+[![lmyhappy66](https://img.shields.io/badge/lmyhappy66-github-blue?logo=github)](https://github.com/lmyhappy66)
 
 He is currently a Fellow in the Department of Earth and Planetary Sciences (EPS) at Harvard University.
 
