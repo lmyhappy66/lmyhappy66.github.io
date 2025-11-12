@@ -1,12 +1,3 @@
-# Marine Robotics
+## Trajectory Tracking of An Autonomous Surface Vehicle Based on Model Predictive Control
 
-This page provides details about our research in Marine Robotics.
-
-## Overview
-We investigate unmanned surface vehicles (USVs), focusing on:
-- Motion control
-- System modeling and identification
-- Robust planning in complex marine environments
-
-## Publications and Demos
-- Coming soon.
+High-precision trajectory tracking is a key technology for achieving autonomous navigation of unmanned surface vehicles. To improve the trajectory tracking accuracy of unmanned surface vehicles, we propose a trajectory tracking algorithm based on sparse regression parameter identification and nonlinear model predictive control(NMPC), using a fully actuated unmanned tug model with a bow thruster as the research object. Employing the sparse identification of nonlinear dynamics, we conduct precise parameter identification and modeling of the tug’s nonlinear dynamics by employing iteratively sequential thresholded least-squares(STLS) according to the simplified system dynamics and using time-series data of attitude and propeller output collected from navigation experiments. Then, we address the constrained and time parameterized trajectory tracking control problem online using acados solver, which allows for rapidly obtaining the optimal propeller control commands based on the current system state and trajectory reference. Through simulations and experiments, the proposed NMPC-based trajectory tracking algorithm demonstrates high control accuracy and robustness, which also validates the accuracy and efficiency of the proposed parameter identification method.

@@ -1,1 +1,3 @@
-
+- National Scholarship for Postgraduates (Ministry of Education, China), 2025.
+- Outstanding Graduate Award (SJTU), 2024.
+- Outstanding Bachelor's Thesis Award (School of Ocean and Civil Engineering, SJTU), 2024.

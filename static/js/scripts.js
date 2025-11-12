@@ -124,4 +124,16 @@ window.addEventListener('DOMContentLoaded', event => {
             .catch(err => { console.error('[Research Cards] Fetch failed', err); cardsContainer.innerHTML = '<div class="text-danger">Failed to load research cards.</div>'; });
     }
 
+    // Cache-bust avatar photo so replacing photo.png reflects immediately
+    try {
+        const avatarImg = document.querySelector('#avatar img');
+        if (avatarImg && avatarImg.getAttribute('src')) {
+            const src = avatarImg.getAttribute('src');
+            const sep = src.includes('?') ? '&' : '?';
+            avatarImg.setAttribute('src', `${src}${sep}_ts=${Date.now()}`);
+        }
+    } catch (e) {
+        console.debug('Avatar cache-bust skipped:', e);
+    }
+
 }); 

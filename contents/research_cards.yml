@@ -8,16 +8,11 @@
 cards:
   - slug: tug-trajectory-tracking
     title: Trajectory Tracking of A Full-Actuated Tug Model Based on NMPC
-    image: static/assets/img/background.jpeg
-    image_max_width: 640px  # Override lead image width on detail page
-    excerpt: "Unmanned surface vehicles: motion control, system modeling, robust planning in dynamic marine environments."
-  - slug: motion-control
-    title: Motion Control
-    image: static/assets/img/background.jpeg
-    image_max_width: 500px  # Example custom width
-    excerpt: "Nonlinear controllers and MPC for marine platforms under uncertainty and disturbances."
-  - slug: system-modeling
-    title: System Modeling
-    image: static/assets/img/background.jpeg
-    image_max_width: 560px  # Example custom width
-    excerpt: "Parameter identification and hybrid modeling for vessel dynamics."
+    image: static/assets/img/tug-trajectory-tracking.gif
+    image_max_width: 800px  # Override lead image width on detail page
+    excerpt: "The bachelor's thesis work on trajectory tracking control of a full-actuated tug using nonlinear model predictive control."
+  - slug: dmpc-usv-formation
+    title: Distributed NMPC for A Heterogenous Three-USVs Formation
+    image: static/assets/img/dmpc-usv-formation.gif
+    image_max_width: 800px  # Example custom width
+    excerpt: "Collision-free USV formation control based on DMPC. Obstacles are detected by the Livox Mid-360 LiDAR using fast euclidean clustering and principal component analysis."
