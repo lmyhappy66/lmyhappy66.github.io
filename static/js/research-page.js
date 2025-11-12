@@ -39,12 +39,23 @@ window.addEventListener('DOMContentLoaded', () => {
                         const cards = cfg && cfg.cards ? cfg.cards : [];
                         const match = cards.find(c => c.slug === topic);
                         const headerEl = document.getElementById('research-page-title');
-                        if (match && headerEl) headerEl.innerHTML = `<i class="bi bi-gear-fill"></i> ${match.title}`;
+                        if (match && headerEl) headerEl.innerHTML = `<i class=\"bi bi-gear-fill\"></i> ${match.title}`;
+                        // Set hero background and text
+                        const hero = document.getElementById('research-hero');
+                        const heroText = document.getElementById('research-hero-text');
+                        const imgUrl = (match && match.image) ? match.image : 'static/assets/img/background.jpeg';
+                        if (hero) hero.style.backgroundImage = `url('${imgUrl}')`;
+                        if (heroText) heroText.textContent = match && match.title ? match.title : 'Research';
                         if (match && siteTitle) document.title = `${match.title} | ${siteTitle}`;
                         else if (siteTitle) document.title = `Research | ${siteTitle}`;
                     })
                     .catch(() => { if (siteTitle) document.title = `Research | ${siteTitle}`; });
             } else {
+                // No topic: set default hero
+                const hero = document.getElementById('research-hero');
+                const heroText = document.getElementById('research-hero-text');
+                if (hero) hero.style.backgroundImage = `url('static/assets/img/background.jpeg')`;
+                if (heroText) heroText.textContent = 'Research';
                 if (siteTitle) document.title = `Research | ${siteTitle}`;
             }
         });

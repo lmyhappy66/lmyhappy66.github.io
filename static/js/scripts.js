@@ -55,28 +55,49 @@ window.addEventListener('DOMContentLoaded', event => {
             .then(response => response.text())
             .then(markdown => {
                 const html = marked.parse(markdown);
-                document.getElementById(name + '-md').innerHTML = html;
+                const target = document.getElementById(name + '-md');
+                if (target) {
+                    target.innerHTML = html;
+                }
             }).then(() => {
                 // MathJax
-                MathJax.typeset();
+                if (window.MathJax && MathJax.typeset) { MathJax.typeset(); }
             })
             .catch(error => console.log(error));
     })
 
     // Research Cards (optional, dynamic from YAML)
+    // Early debug marker
+    console.debug('[Research Cards] Script reached initialization');
     const cardsContainer = document.getElementById('research-cards');
     if (cardsContainer) {
-        fetch(content_dir + research_cards_file)
+        console.debug('[Research Cards] Container found');
+        // Optional: show a lightweight placeholder while loading
+        cardsContainer.innerHTML = '<div class="text-muted">Loading research cards…</div>';
+        // Ensure YAML parser is available
+        if (typeof jsyaml === 'undefined') {
+            cardsContainer.innerHTML = '<div class="text-danger">YAML parser not loaded. Please ensure js-yaml.min.js is included before scripts.js.</div>';
+            return;
+        }
+        const yamlUrl = content_dir + research_cards_file + '?_ts=' + Date.now();
+        console.debug('[Research Cards] Fetching YAML:', yamlUrl);
+        fetch(yamlUrl)
             .then(r => r.text())
             .then(text => {
+                console.debug('[Research Cards] YAML length:', text.length);
                 let cfg;
-                try { cfg = jsyaml.load(text); } catch (e) { console.error('YAML error', e); return; }
+                try { cfg = jsyaml.load(text); } catch (e) { console.error('[Research Cards] YAML parse error', e); cardsContainer.innerHTML = '<div class="text-danger">YAML parse error (see console).</div>'; return; }
                 const cards = (cfg && cfg.cards) ? cfg.cards : [];
-                if (!Array.isArray(cards) || cards.length === 0) return;
+                if (!Array.isArray(cards) || cards.length === 0) {
+                    console.debug('[Research Cards] No cards array or empty');
+                    cardsContainer.innerHTML = '<div class="text-muted">No research cards configured.</div>';
+                    return;
+                }
 
                 const row = document.createElement('div');
                 row.className = 'row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4';
                 cards.forEach(card => {
+                    console.debug('[Research Cards] Rendering card slug:', card.slug);
                     const col = document.createElement('div');
                     col.className = 'col';
                     const link = card.slug ? `research.html?topic=${encodeURIComponent(card.slug)}` : 'research.html';
@@ -94,9 +115,13 @@ window.addEventListener('DOMContentLoaded', event => {
                         </div>`;
                     row.appendChild(col);
                 });
-                cardsContainer.replaceChildren(row);
+                if (cardsContainer.replaceChildren) { cardsContainer.replaceChildren(row); }
+                else { cardsContainer.innerHTML = ''; cardsContainer.appendChild(row); }
+                console.debug('[Research Cards] Render complete, total cards:', cards.length);
+                // Debug info (can be removed):
+                // cardsContainer.insertAdjacentHTML('beforeend', `<div class="small text-muted mt-2">Loaded ${cards.length} card(s).</div>`);
             })
-            .catch(err => console.log('research_cards.yml not found or failed to load', err));
+            .catch(err => { console.error('[Research Cards] Fetch failed', err); cardsContainer.innerHTML = '<div class="text-danger">Failed to load research cards.</div>'; });
     }
 
 }); 
