@@ -1,0 +1,7 @@
+2025-11-12:
+    1、完成Prevoius Work的编写
+     - 拖轮轨迹跟踪
+     - 三船编队
+     - PIC-SINDy
+    2、完成Publications和Awards的编写
+    3、完成github仓库readme的编写

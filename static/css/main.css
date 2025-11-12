@@ -22,6 +22,57 @@
     height: 25rem;
 }
 
+/* Hero variant that preserves image aspect ratio without cropping */
+#research-hero.aspect-contain {
+    background-size: contain;
+    background-position: center top;
+    background-repeat: no-repeat;
+    /* Provide a flexible min-height so tall images can expand naturally */
+    min-height: 320px;
+    /* Let height auto-expand based on intrinsic aspect ratio; use padding-top fallback */
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    height: auto; /* Override .top-section fixed height to preserve original aspect ratio */
+}
+
+/* Optional: add a subtle backdrop for text readability when using contain */
+#research-hero.aspect-contain .top-section-content {
+    background: rgba(0,0,0,0.25);
+    backdrop-filter: blur(2px);
+    -webkit-backdrop-filter: blur(2px);
+}
+
+/* Image-based hero to avoid any cropping */
+#research-hero .hero-media {
+    position: relative;
+    z-index: 1; /* ensure image sits above ::before overlay */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden; /* ensure no accidental overflow when image is wide */
+}
+
+#research-hero img#research-hero-img {
+    display: block;
+    width: 100%;
+    height: auto;            /* maintain original aspect ratio */
+    max-height: 60vh;        /* prevent the hero from becoming too tall */
+    object-fit: contain;     /* be explicit: never crop */
+    background: #222;        /* placeholder background while loading */
+}
+
+/* Slightly reduce padding and allow auto height for the research hero when using image */
+#research-hero {
+    padding: 1.5rem 0 1rem 0;
+    height: auto;
+    min-height: 320px; /* keep a visible area even before image loads */
+}
+
+/* Disable default dark overlay when we are using an <img> */
+#research-hero.no-overlay::before {
+    display: none;
+}
+
 .top-section h2 {
     font-weight: 400;
 }
@@ -106,6 +157,16 @@ section .main-body{
 @media screen and (max-width: 991px) {
     #avatar {
         margin: 0;
+    }
+}
+
+/* Compact spacing for pages with fixed-top navbar (used by research.html) */
+.page-with-fixed-nav {
+    padding-top: 4rem; /* minimal offset so content not hidden by navbar */
+}
+@media (min-width: 992px) {
+    .page-with-fixed-nav {
+        padding-top: 4.5rem; /* slightly more on larger screens */
     }
 }
 

@@ -20,24 +20,37 @@
   <script type="text/javascript" src="static/js/research-page.js"></script>
 </head>
 <body>
-  <nav class="navbar navbar-light shadow-sm px-3">
-    <a class="navbar-brand" href="index.html">&#8592; Back</a>
-    <span class="fw-bold" id="page-top-title"></span>
-  </nav>
-  <!-- Topic Hero -->
-  <section class="top-section" id="research-hero" style="background-image: url('static/assets/img/background.jpeg');">
-    <div class="top-section-content">
-      <div class="container px-5">
-        <h2 id="research-hero-text" class="text-white display-3 lh-1 font-alt"></h2>
+  <!-- Navigation (same structure as index.html) -->
+  <nav class="header navbar navbar-expand-lg navbar-light fixed-top shadow-sm" id="mainNav">
+    <div class="container px-5">
+      <a id="page-top-title" class="navbar-brand fw-bold" href="index.html#research">&lt;back</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive"
+        aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        MENU
+        <i class="bi-list"></i>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ms-auto me-4 my-3 my-lg-0">
+          <li class="nav-item">
+            <a class="nav-link me-lg-3" href="index.html#page-top">HOME</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link me-lg-3" href="index.html#research">RESEARCH</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link me-lg-3" href="index.html#publications">PUBLICATIONS</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link me-lg-3" href="index.html#awards">AWARDS</a>
+          </li>
+        </ul>
       </div>
     </div>
-  </section>
-  <!-- End Topic Hero -->
-  <section class="mt5 md5">
+  </nav>
+  <section class="page-with-fixed-nav mt-2">
     <div class="container px-5">
-      <header>
-        <h2 id="research-page-title"><i class="bi bi-gear-fill"></i> Research</h2>
-      </header>
+      <!-- Lead image appears first -->
+      <div id="research-lead-media" class="mb-3"></div>
       <div class="main-body" id="research-md"></div>
     </div>
   </section>
